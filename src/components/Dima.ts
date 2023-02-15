@@ -1,3 +1,4 @@
+//generic
 export type UserType = {
   role: number;
   id: number;
@@ -23,10 +24,22 @@ const response1: ServerResponseType<UserType> = {
 };
 
 const response2: ServerResponseType<PhotoType> = {
-    errorCode: 1,
-    messages: ["good", "bad"],
-    data: {
-      large: "large",
-      small : "small",
-    },
-  };
+  errorCode: 1,
+  messages: ["good", "bad"],
+  data: {
+    large: "large",
+    small: "small",
+  },
+};
+
+//typeof
+type Nullable<T> = null | T;
+
+const initial = {
+  id: 1,
+  name: "anton",
+  photo: null as PhotoType | null,
+  user: null as Nullable<UserType>,
+};
+
+const StateType = typeof initial;
