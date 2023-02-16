@@ -43,3 +43,12 @@ const initial = {
 };
 
 const StateType = typeof initial;
+
+
+//ReturnType - анализирует то, что принимает и возвращает функция и выдает по итогу тип
+
+const actionCreator = (age: number) => ({type: "set-age", age} as const) //as const - зафиксирует "set-age" не как просто string, а как именно "set-age"
+
+type ActionType = ReturnType<typeof actionCreator>
+
+const action: ActionType = {type: "set-age", age: 18}
