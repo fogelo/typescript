@@ -46,9 +46,27 @@ const StateType = typeof initial;
 
 
 //ReturnType - анализирует то, что принимает и возвращает функция и выдает по итогу тип
-
 const actionCreator = (age: number) => ({type: "set-age", age} as const) //as const - зафиксирует "set-age" не как просто string, а как именно "set-age"
 
 type ActionType = ReturnType<typeof actionCreator>
 
 const action: ActionType = {type: "set-age", age: 18}
+
+
+//conditional types
+type HipHop<T> = T extends "user" ? UserType : T extends "photo" ? PhotoType : number
+
+let a: HipHop<"user"> = {
+    role: 1,
+    id: 2,
+}
+
+let b: HipHop<"photo"> = {
+    large: "large",
+    small: "small",
+}
+
+let c: HipHop<"user" | "photo"> = {
+    role: 1,
+    id: 2,
+}
